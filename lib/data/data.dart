@@ -1,9 +1,16 @@
+import 'package:flutter/cupertino.dart';
 import 'package:food_delivery_app_flutter/models/food.dart';
 
 import '../models/order.dart';
 import '../models/restaurant.dart';
 import '../models/user.dart';
+// Color
 
+Color backGroundColor = const Color.fromARGB(255, 160, 161, 105);
+Color primaryColor = const Color(0xFF151D3B);
+Color buttonColor = const Color(0xFFD82148);
+Color blackColor = const Color(0xFF000000);
+Color whiteColor = const Color(0xFFFFFFFF);
 // Food
 final _burrito =
     Food(imageUrl: 'images/burrito.jpg', name: 'Burrito', price: 8.99);
