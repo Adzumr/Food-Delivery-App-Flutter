@@ -15,9 +15,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Food Delivery App',
-      theme: ThemeData(
-        primaryColor: buttonColor,
-      ),
+      theme: ThemeData(primaryColor: buttonColor),
       home: const HomeScreen(),
     );
   }
