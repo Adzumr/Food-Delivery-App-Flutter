@@ -1,7 +1,7 @@
 class Food {
-  String? imageUrl;
-  String? name;
-  double? price;
+  final String? imageUrl;
+  final String? name;
+  final double? price;
 
   Food({
     this.imageUrl,
