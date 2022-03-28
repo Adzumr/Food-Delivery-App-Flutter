@@ -20,18 +20,20 @@ class RecentOrders extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              Container(
-                height: 120.sp,
-                margin: const EdgeInsets.symmetric(vertical: 8.0),
+              SizedBox(
+                height: 100.sp,
+                // margin: const EdgeInsets.only(left: 8.0),
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   itemCount: currentUser.orders!.length,
                   itemBuilder: (BuildContext context, int index) {
                     Order order = currentUser.orders![index];
                     String foodName = order.food!.name.toString();
+                    String restaurantName = order.restaurant!.name.toString();
                     String foodPrice = order.food!.price.toString();
                     String foodImage = order.food!.imageUrl.toString();
-                    return _recentOrders(foodImage, foodName, foodPrice);
+                    return _recentOrders(
+                        foodImage, foodName, restaurantName, foodPrice);
                   },
                 ),
               )
@@ -40,17 +42,19 @@ class RecentOrders extends StatelessWidget {
     );
   }
 
-  Card _recentOrders(String foodImage, String foodName, String foodPrice) {
+  Card _recentOrders(String foodImage, String foodName, String restaurantName,
+      String foodPrice) {
     return Card(
+      margin: const EdgeInsets.only(right: 20),
       elevation: 2,
       color: whiteColor,
       shape: OutlineInputBorder(
           borderRadius: BorderRadius.circular(20),
           borderSide: BorderSide(color: whiteColor, width: 2)),
       child: Container(
-        width: 280.sp,
+        width: 260.sp,
         // padding: const EdgeInsets.all(8.0),
-        margin: const EdgeInsets.only(right: 15),
+        margin: const EdgeInsets.only(right: 5.0),
         decoration: BoxDecoration(
           color: whiteColor,
           borderRadius: BorderRadius.circular(20),
@@ -65,7 +69,7 @@ class RecentOrders extends StatelessWidget {
                     borderRadius: BorderRadius.circular(15),
                     child: SizedBox(
                       width: 100.sp,
-                      height: 120.sp,
+                      height: 100.sp,
                       child: Image.asset(
                         foodImage,
                         fit: BoxFit.fitHeight,
@@ -86,18 +90,25 @@ class RecentOrders extends StatelessWidget {
                               fontWeight: FontWeight.bold,
                               fontSize: 16.sp,
                             ),
+                            overflow: TextOverflow.ellipsis,
                           ),
+                          const SizedBox(height: 5.0),
                           Text(
-                            "\$ " + foodPrice,
+                            restaurantName,
                             style: TextStyle(
-                              fontWeight: FontWeight.w600,
-                              fontSize: 16.sp,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 14.sp,
                             ),
                             overflow: TextOverflow.ellipsis,
                           ),
-                          const Icon(
-                            Icons.star_rate_sharp,
-                            color: Colors.yellow,
+                          const SizedBox(height: 5.0),
+                          Text(
+                            "\$ " + foodPrice,
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 14.sp,
+                            ),
+                            overflow: TextOverflow.ellipsis,
                           ),
                         ],
                       ),
