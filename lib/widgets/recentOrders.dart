@@ -32,7 +32,8 @@ class RecentOrders extends StatelessWidget {
                     String foodName = order.food!.name.toString();
                     String foodPrice = order.food!.price.toString();
                     String foodImage = order.food!.imageUrl.toString();
-                    return Padding(
+                    return Container(
+                      width: 270.sp,
                       padding: const EdgeInsets.all(8.0),
                       child: Row(
                         children: [
