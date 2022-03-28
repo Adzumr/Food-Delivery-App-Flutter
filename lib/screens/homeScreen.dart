@@ -16,6 +16,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return SafeArea(
       child: Sizer(
         builder: (context, orientation, deviceType) => Scaffold(
+          backgroundColor: Colors.grey[100],
           appBar: AppBar(
             title: Text(
               "Food Delivery",
