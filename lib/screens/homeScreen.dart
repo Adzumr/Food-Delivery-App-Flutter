@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery_app_flutter/data/data.dart';
+import 'package:food_delivery_app_flutter/widgets/recentOrders.dart';
 import 'package:sizer/sizer.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -44,7 +45,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ],
           ),
           body: Padding(
-            padding: const EdgeInsets.all(15.0),
+            padding: const EdgeInsets.all(20.0),
             child: ListView(
               children: [
                 TextField(
@@ -87,6 +88,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     filled: true,
                   ),
                 ),
+                const RecentOrders()
               ],
             ),
           ),
