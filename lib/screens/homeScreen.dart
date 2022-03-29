@@ -1,3 +1,4 @@
+import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
 import 'package:food_delivery_app_flutter/data/data.dart';
 import 'package:food_delivery_app_flutter/widgets/recentOrders.dart';
@@ -55,6 +56,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 SearchBar(),
                 RecentOrders(),
                 NearByRestaurants(),
+             
               ],
             ),
           ),
