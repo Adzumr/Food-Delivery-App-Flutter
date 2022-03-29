@@ -4,6 +4,8 @@ import 'package:food_delivery_app_flutter/widgets/recentOrders.dart';
 import 'package:food_delivery_app_flutter/widgets/searchBar.dart';
 import 'package:sizer/sizer.dart';
 
+import '../widgets/nearByRestaurant.dart';
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
@@ -52,6 +54,7 @@ class _HomeScreenState extends State<HomeScreen> {
               children: const [
                 SearchBar(),
                 RecentOrders(),
+                NearByRestaurants(),
               ],
             ),
           ),
