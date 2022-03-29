@@ -3,6 +3,8 @@ import 'package:food_delivery_app_flutter/data/data.dart';
 import 'package:food_delivery_app_flutter/screens/restaurantScreen.dart';
 import 'package:sizer/sizer.dart';
 
+import 'starRating.dart';
+
 class NearByRestaurants extends StatelessWidget {
   const NearByRestaurants({Key? key}) : super(key: key);
 
@@ -69,30 +71,7 @@ class NearByRestaurants extends StatelessWidget {
                             overflow: TextOverflow.visible,
                           ),
                           const SizedBox(height: 5),
-                          Row(
-                            children: [
-                              Icon(
-                                Icons.star_sharp,
-                                color: Colors.yellow,
-                                size: 20.sp,
-                              ),
-                              Icon(
-                                Icons.star_sharp,
-                                color: Colors.yellow,
-                                size: 20.sp,
-                              ),
-                              Icon(
-                                Icons.star_sharp,
-                                color: Colors.yellow,
-                                size: 20.sp,
-                              ),
-                              Icon(
-                                Icons.star_sharp,
-                                color: Colors.yellow,
-                                size: 20.sp,
-                              ),
-                            ],
-                          )
+                          const StarRating(),
                         ],
                       ),
                     ),
@@ -126,3 +105,5 @@ class NearByRestaurants extends StatelessWidget {
     );
   }
 }
+
+
