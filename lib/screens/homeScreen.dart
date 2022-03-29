@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery_app_flutter/data/data.dart';
 import 'package:food_delivery_app_flutter/widgets/recentOrders.dart';
+import 'package:food_delivery_app_flutter/widgets/searchBar.dart';
 import 'package:sizer/sizer.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -48,48 +49,9 @@ class _HomeScreenState extends State<HomeScreen> {
           body: Padding(
             padding: const EdgeInsets.all(20.0),
             child: ListView(
-              children: [
-                TextField(
-                  keyboardType: TextInputType.text,
-                  toolbarOptions: const ToolbarOptions(
-                    copy: true,
-                    cut: true,
-                    paste: true,
-                    selectAll: true,
-                  ),
-                  decoration: InputDecoration(
-                    contentPadding: const EdgeInsets.symmetric(
-                        vertical: 10, horizontal: 20),
-                    prefixIcon: IconButton(
-                      onPressed: () {},
-                      icon: Icon(
-                        Icons.search,
-                        size: 20.sp,
-                      ),
-                    ),
-                    suffixIcon: IconButton(
-                      onPressed: () {},
-                      icon: Icon(
-                        Icons.close,
-                        size: 20.sp,
-                      ),
-                    ),
-                    hintText: "Search Food or Restaurant",
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(30),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(30),
-                      borderSide: BorderSide(
-                        color: Theme.of(context).primaryColor,
-                        width: 2,
-                      ),
-                    ),
-                    fillColor: whiteColor,
-                    filled: true,
-                  ),
-                ),
-                const RecentOrders()
+              children: const [
+                SearchBar(),
+                RecentOrders(),
               ],
             ),
           ),
