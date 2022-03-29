@@ -10,66 +10,93 @@ class NearByRestaurants extends StatelessWidget {
     List<Widget> nearByRestaurantsList = [];
     for (var restaurant in restaurants) {
       nearByRestaurantsList.add(
-        Container(
-          margin: const EdgeInsets.symmetric(vertical: 5),
-          decoration: BoxDecoration(
+        Card(
+          margin: const EdgeInsets.symmetric(vertical: 10),
+          shape: OutlineInputBorder(
             borderRadius: BorderRadius.circular(20),
-            color: whiteColor,
+            borderSide: BorderSide(color: whiteColor),
           ),
-          child: Row(
-            children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(20),
-                child: Image(
-                  image: AssetImage(
-                    restaurant.imageUrl!,
+          elevation: 2,
+          child: Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              color: whiteColor,
+            ),
+            child: Row(
+              children: [
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(20),
+                  child: Image(
+                    image: AssetImage(
+                      restaurant.imageUrl!,
+                    ),
+                    height: 100.sp,
+                    width: 120.sp,
+                    fit: BoxFit.cover,
                   ),
-                  height: 100.sp,
-                  width: 120.sp,
-                  fit: BoxFit.cover,
                 ),
-              ),
-              const SizedBox(width: 10),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(restaurant.name!),
-                  const SizedBox(height: 5),
-                  Text(restaurant.address!),
-                  const SizedBox(height: 5),
-                  Row(
-                    children: [
-                      Icon(
-                        Icons.star_sharp,
-                        color: Colors.yellow,
-                        size: 20.sp,
-                      ),
-                      Icon(
-                        Icons.star_sharp,
-                        color: Colors.yellow,
-                        size: 20.sp,
-                      ),
-                      Icon(
-                        Icons.star_sharp,
-                        color: Colors.yellow,
-                        size: 20.sp,
-                      ),
-                      Icon(
-                        Icons.star_sharp,
-                        color: Colors.yellow,
-                        size: 20.sp,
-                      ),
-                    ],
-                  )
-                ],
-              ),
-            ],
+                const SizedBox(width: 10),
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.only(right: 8.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          restaurant.name!,
+                          style: TextStyle(
+                            fontSize: 14.sp,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                        const SizedBox(height: 5),
+                        Text(
+                          restaurant.address!,
+                          style: TextStyle(
+                            fontSize: 12.sp,
+                            fontWeight: FontWeight.w600,
+                          ),
+                          overflow: TextOverflow.visible,
+                        ),
+                        const SizedBox(height: 5),
+                        Row(
+                          children: [
+                            Icon(
+                              Icons.star_sharp,
+                              color: Colors.yellow,
+                              size: 20.sp,
+                            ),
+                            Icon(
+                              Icons.star_sharp,
+                              color: Colors.yellow,
+                              size: 20.sp,
+                            ),
+                            Icon(
+                              Icons.star_sharp,
+                              color: Colors.yellow,
+                              size: 20.sp,
+                            ),
+                            Icon(
+                              Icons.star_sharp,
+                              color: Colors.yellow,
+                              size: 20.sp,
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       );
     }
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 15),
+      width: double.infinity,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -80,7 +107,7 @@ class NearByRestaurants extends StatelessWidget {
               fontWeight: FontWeight.bold,
             ),
           ),
-          const SizedBox(height: 5),
+          const SizedBox(height: 10),
           Column(
             children: nearByRestaurantsList,
           )

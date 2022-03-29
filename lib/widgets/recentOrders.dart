@@ -96,8 +96,8 @@ class RecentOrders extends StatelessWidget {
                           Text(
                             restaurantName,
                             style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 14.sp,
+                              fontWeight: FontWeight.w600,
+                              fontSize: 12.sp,
                             ),
                             overflow: TextOverflow.ellipsis,
                           ),
