@@ -17,37 +17,42 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Container(
-          height: 200.sp,
-          width: double.infinity,
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage(widget.restaurant.imageUrl!),
-              fit: BoxFit.cover,
-            ),
-          ),
-          padding: const EdgeInsets.only(right: 20),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              BackButton(
-                color: whiteColor,
-              ),
-              IconButton(
-                onPressed: () {
-                  setState(() {
-                    isFavorite = !isFavorite;
-                  });
-                },
-                icon: Icon(
-                  isFavorite ? Icons.favorite : Icons.favorite_border,
-                  color: buttonColor,
-                  size: 30.sp,
+        child: Stack(
+          children: [
+            SizedBox(
+              height: 180.sp,
+              width: double.infinity,
+              child: Hero(
+                tag: widget.restaurant.imageUrl!,
+                child: Image(
+                  height: 180.sp,
+                  width: double.infinity,
+                  fit: BoxFit.cover,
+                  image: AssetImage(widget.restaurant.imageUrl!),
                 ),
               ),
-            ],
-          ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                BackButton(
+                  color: whiteColor,
+                ),
+                IconButton(
+                  onPressed: () {
+                    setState(() {
+                      isFavorite = !isFavorite;
+                    });
+                  },
+                  icon: Icon(
+                    isFavorite ? Icons.favorite : Icons.favorite_border,
+                    color: buttonColor,
+                    size: 30.sp,
+                  ),
+                ),
+              ],
+            ),
+          ],
         ),
       ),
     );
