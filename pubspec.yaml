@@ -36,6 +36,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   sizer: ^2.0.15
   animations: ^2.0.2
+  device_preview: ^1.0.0
 
 dev_dependencies:
   flutter_test:

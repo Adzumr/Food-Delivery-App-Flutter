@@ -1,9 +1,14 @@
+import 'package:device_preview/device_preview.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:food_delivery_app_flutter/data/data.dart';
 import 'package:food_delivery_app_flutter/screens/homeScreen.dart';
 
 void main() {
-  runApp(const MyApp());
+  DevicePreview(
+    enabled: !kDebugMode,
+    builder: (context) => const MyApp(),
+  );
 }
 
 class MyApp extends StatelessWidget {

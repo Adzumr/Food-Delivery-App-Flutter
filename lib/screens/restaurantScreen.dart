@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery_app_flutter/data/data.dart';
+import 'package:food_delivery_app_flutter/models/food.dart';
 import 'package:food_delivery_app_flutter/models/restaurant.dart';
 import 'package:food_delivery_app_flutter/widgets/starRating.dart';
 import 'package:sizer/sizer.dart';
@@ -124,6 +125,35 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
                 ],
               ),
             ),
+            Column(
+              children: [
+                Center(
+                  child: Text(
+                    "Menu",
+                    style: TextStyle(
+                      fontSize: 18.sp,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 10.0),
+                Container(
+                  height: 269.sp,
+                  color: buttonColor,
+                  child: GridView.count(
+                    padding: const EdgeInsets.all(10),
+                    crossAxisCount: 2,
+                    children:
+                        List.generate(widget.restaurant.menu!.length, (index) {
+                      Food foodMenu = widget.restaurant.menu![index];
+                      return Center(
+                        child: Text(foodMenu.name!),
+                      );
+                    }),
+                  ),
+                )
+              ],
+            )
           ],
         ),
       ),
