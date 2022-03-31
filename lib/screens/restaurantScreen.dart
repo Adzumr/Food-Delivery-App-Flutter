@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery_app_flutter/data/data.dart';
-import 'package:food_delivery_app_flutter/models/food.dart';
 import 'package:food_delivery_app_flutter/models/restaurant.dart';
+import 'package:food_delivery_app_flutter/widgets/restaurantMenu.dart';
 import 'package:food_delivery_app_flutter/widgets/starRating.dart';
 import 'package:sizer/sizer.dart';
 
@@ -137,59 +137,7 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
                   ),
                 ),
                 const SizedBox(height: 10.0),
-                SizedBox(
-                  height: 269.sp,
-                  child: GridView.count(
-                    padding: const EdgeInsets.all(10),
-                    crossAxisCount: 2,
-                    children:
-                        List.generate(widget.restaurant.menu!.length, (index) {
-                      Food foodMenu = widget.restaurant.menu![index];
-                      return Card(
-                        margin: const EdgeInsets.all(10),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(15),
-                        ),
-                        elevation: 2,
-                        child: Container(
-                          padding: const EdgeInsets.all(10),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            image: DecorationImage(
-                              image: AssetImage(foodMenu.imageUrl!),
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              ElevatedButton(
-                                style: ElevatedButton.styleFrom(
-                                  elevation: 2,
-                                  primary: buttonColor,
-                                  onPrimary: whiteColor,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(15),
-                                  ),
-                                ),
-                                onPressed: () {},
-                                child: Text(
-                                  foodMenu.name!,
-                                  style: TextStyle(
-                                    fontSize: 16.sp,
-                                    color: whiteColor,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                  overflow: TextOverflow.ellipsis,
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
-                      );
-                    }),
-                  ),
-                )
+                RestaurantMenuWidget(restaurantScreen: widget)
               ],
             )
           ],

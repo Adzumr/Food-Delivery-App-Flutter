@@ -1,6 +1,7 @@
 import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
 import 'package:food_delivery_app_flutter/data/data.dart';
+import 'package:food_delivery_app_flutter/screens/cartScreen.dart';
 import 'package:food_delivery_app_flutter/widgets/recentOrders.dart';
 import 'package:food_delivery_app_flutter/widgets/searchBar.dart';
 import 'package:sizer/sizer.dart';
@@ -38,7 +39,10 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             actions: [
               TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (_) => const CartScreen()));
+                },
                 child: Text(
                   "Cart (${currentUser.cart!.length})",
                   style: TextStyle(
@@ -56,7 +60,6 @@ class _HomeScreenState extends State<HomeScreen> {
                 SearchBar(),
                 RecentOrders(),
                 NearByRestaurants(),
-             
               ],
             ),
           ),
