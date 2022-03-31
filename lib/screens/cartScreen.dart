@@ -25,66 +25,112 @@ class _CartScreenState extends State<CartScreen> {
         itemCount: currentUser.cart!.length,
         itemBuilder: (BuildContext context, int index) {
           Order order = currentUser.orders![index];
-          return Container(
-            padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-            child: Card(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(15),
+          return Card(
+            margin: const EdgeInsets.all(10.0),
+            elevation: 2,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(20),
+            ),
+            child: Container(
+              width: 260.sp,
+              decoration: BoxDecoration(
+                color: whiteColor,
+                borderRadius: BorderRadius.circular(20),
               ),
-              child: SizedBox(
-                height: 100.sp,
-                width: double.infinity,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Row(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Expanded(
+                    child: Row(
                       children: [
                         ClipRRect(
                           borderRadius: BorderRadius.circular(15),
-                          child: Image(
+                          child: SizedBox(
+                            width: 100.sp,
                             height: 100.sp,
-                            width: 120.sp,
-                            fit: BoxFit.cover,
-                            image: AssetImage(order.food!.imageUrl.toString()),
+                            child: Image.asset(
+                              order.food!.imageUrl.toString(),
+                              fit: BoxFit.fitHeight,
+                            ),
                           ),
                         ),
-                        const SizedBox(width: 20),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              order.food!.name.toString(),
-                              style: TextStyle(
-                                fontSize: 16.sp,
-                                fontWeight: FontWeight.bold,
-                              ),
-                              overflow: TextOverflow.ellipsis,
+                        const SizedBox(width: 10),
+                        Expanded(
+                          child: Container(
+                            margin: const EdgeInsets.all(8.0),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  order.food!.name.toString(),
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w900,
+                                    fontSize: 16.sp,
+                                  ),
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                                const SizedBox(height: 5.0),
+                                Text(
+                                  order.restaurant!.name.toString(),
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 16.sp,
+                                  ),
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                                const SizedBox(height: 5.0),
+                                Container(
+                                  width: 60.sp,
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 5, vertical: 3),
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10),
+                                    border: Border.all(
+                                      width: 1,
+                                      color: buttonColor,
+                                    ),
+                                  ),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Icon(
+                                        Icons.remove,
+                                        size: 15.sp,
+                                      ),
+                                      Text(
+                                        order.quantity.toString(),
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.w600,
+                                          fontSize: 14.sp,
+                                        ),
+                                        overflow: TextOverflow.ellipsis,
+                                      ),
+                                      Icon(
+                                        Icons.add,
+                                        size: 15.sp,
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
                             ),
-                            const SizedBox(height: 5.0),
-                            Text(
-                              order.restaurant!.name.toString(),
-                              style: TextStyle(
-                                fontSize: 14.sp,
-                                fontWeight: FontWeight.w600,
-                              ),
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                            const SizedBox(height: 5.0),
-                            Text(
-                              "\$ " + order.food!.price.toString(),
-                              style: TextStyle(
-                                fontSize: 14.sp,
-                                fontWeight: FontWeight.w600,
-                              ),
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                          ],
+                          ),
                         ),
                       ],
                     ),
-                  ],
-                ),
+                  ),
+                  Text(
+                    "\$ " + order.food!.price.toString(),
+                    style: TextStyle(
+                      fontWeight: FontWeight.w900,
+                      fontSize: 16.sp,
+                    ),
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  const SizedBox(width: 15)
+                ],
               ),
             ),
           );
