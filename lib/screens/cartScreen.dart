@@ -24,8 +24,7 @@ class _CartScreenState extends State<CartScreen> {
       body: ListView.builder(
         itemCount: currentUser.cart!.length,
         itemBuilder: (BuildContext context, int index) {
-          Order order = currentUser.orders![index];
-          dynamic foodPrice = order.quantity! * order.food!.price!;
+          Order order = currentUser.cart![index];
           return Card(
             margin: const EdgeInsets.all(10.0),
             elevation: 2,
@@ -64,7 +63,7 @@ class _CartScreenState extends State<CartScreen> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Text(
-                                  order.food!.name.toString(),
+                                  "${order.food!.name}",
                                   style: TextStyle(
                                     fontWeight: FontWeight.w900,
                                     fontSize: 16.sp,
@@ -73,7 +72,7 @@ class _CartScreenState extends State<CartScreen> {
                                 ),
                                 const SizedBox(height: 5.0),
                                 Text(
-                                  order.restaurant!.name.toString(),
+                                  "${order.restaurant!.name}",
                                   style: TextStyle(
                                     fontWeight: FontWeight.w600,
                                     fontSize: 16.sp,
@@ -123,7 +122,7 @@ class _CartScreenState extends State<CartScreen> {
                     ),
                   ),
                   Text(
-                    "\$   ${foodPrice.toString()}",
+                    "\$   ${order.quantity! * order.food!.price!}",
                     style: TextStyle(
                       fontWeight: FontWeight.w900,
                       fontSize: 16.sp,

@@ -78,7 +78,7 @@ final currentUser = User(
       date: 'Mar 10, 2022',
       food: _steak,
       restaurant: _restaurant2,
-      quantity: 1,
+      quantity: 3,
     ),
     Order(
       date: 'Mar 8, 2022',
@@ -96,7 +96,7 @@ final currentUser = User(
       date: 'Feb 2, 2021',
       food: _salmon,
       restaurant: _restaurant3,
-      quantity: 1,
+      quantity: 5,
     ),
     Order(
       date: 'Feb 1, 2022',
