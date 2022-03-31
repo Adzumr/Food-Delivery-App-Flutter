@@ -25,6 +25,7 @@ class _CartScreenState extends State<CartScreen> {
         itemCount: currentUser.cart!.length,
         itemBuilder: (BuildContext context, int index) {
           Order order = currentUser.orders![index];
+          dynamic foodPrice = order.quantity! * order.food!.price!;
           return Card(
             margin: const EdgeInsets.all(10.0),
             elevation: 2,
@@ -122,7 +123,7 @@ class _CartScreenState extends State<CartScreen> {
                     ),
                   ),
                   Text(
-                    "\$ " + order.food!.price.toString(),
+                    "\$   ${foodPrice.toString()}",
                     style: TextStyle(
                       fontWeight: FontWeight.w900,
                       fontSize: 16.sp,
