@@ -14,6 +14,9 @@ class CartScreen extends StatefulWidget {
 class _CartScreenState extends State<CartScreen> {
   @override
   Widget build(BuildContext context) {
+    double totalCartAmount = 0;
+    currentUser.cart?.forEach((Order order) => totalCartAmount =
+        order.quantity!.toDouble() * order.food!.price!.toDouble());
     return Scaffold(
       appBar: AppBar(
         systemOverlayStyle: SystemUiOverlayStyle.light,
@@ -22,117 +25,163 @@ class _CartScreenState extends State<CartScreen> {
         title: Text(" Cart (${currentUser.cart!.length})"),
       ),
       body: ListView.builder(
-        itemCount: currentUser.cart!.length,
+        itemCount: currentUser.cart!.length + 1,
         itemBuilder: (BuildContext context, int index) {
           Order order = currentUser.cart![index];
-          return Card(
-            margin: const EdgeInsets.all(10.0),
-            elevation: 2,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20),
-            ),
-            child: Container(
-              width: 260.sp,
-              decoration: BoxDecoration(
-                color: whiteColor,
-                borderRadius: BorderRadius.circular(20),
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Expanded(
+          if (index < currentUser.cart!.length) {
+            return Column(
+              children: [
+                Card(
+                  margin: const EdgeInsets.all(10.0),
+                  elevation: 2,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: Container(
+                    width: 260.sp,
+                    decoration: BoxDecoration(
+                      color: whiteColor,
+                      borderRadius: BorderRadius.circular(20),
+                    ),
                     child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(15),
-                          child: SizedBox(
-                            width: 100.sp,
-                            height: 100.sp,
-                            child: Image.asset(
-                              order.food!.imageUrl.toString(),
-                              fit: BoxFit.fitHeight,
-                            ),
-                          ),
-                        ),
-                        const SizedBox(width: 10),
                         Expanded(
-                          child: Container(
-                            margin: const EdgeInsets.all(8.0),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(
-                                  "${order.food!.name}",
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.w900,
-                                    fontSize: 16.sp,
+                          child: Row(
+                            children: [
+                              ClipRRect(
+                                borderRadius: BorderRadius.circular(15),
+                                child: SizedBox(
+                                  width: 100.sp,
+                                  height: 100.sp,
+                                  child: Image.asset(
+                                    order.food!.imageUrl.toString(),
+                                    fit: BoxFit.fitHeight,
                                   ),
-                                  overflow: TextOverflow.ellipsis,
                                 ),
-                                const SizedBox(height: 5.0),
-                                Text(
-                                  "${order.restaurant!.name}",
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 16.sp,
-                                  ),
-                                  overflow: TextOverflow.ellipsis,
-                                ),
-                                const SizedBox(height: 5.0),
-                                Container(
-                                  width: 60.sp,
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 5, vertical: 3),
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10),
-                                    border: Border.all(
-                                      width: 1,
-                                      color: buttonColor,
-                                    ),
-                                  ),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
+                              ),
+                              const SizedBox(width: 10),
+                              Expanded(
+                                child: Container(
+                                  margin: const EdgeInsets.all(8.0),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                      Icon(
-                                        Icons.remove,
-                                        size: 15.sp,
-                                      ),
                                       Text(
-                                        order.quantity.toString(),
+                                        "${order.food!.name}",
                                         style: TextStyle(
-                                          fontWeight: FontWeight.w600,
-                                          fontSize: 14.sp,
+                                          fontWeight: FontWeight.w900,
+                                          fontSize: 16.sp,
                                         ),
                                         overflow: TextOverflow.ellipsis,
                                       ),
-                                      Icon(
-                                        Icons.add,
-                                        size: 15.sp,
+                                      const SizedBox(height: 5.0),
+                                      Text(
+                                        "${order.restaurant!.name}",
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.w600,
+                                          fontSize: 16.sp,
+                                        ),
+                                        overflow: TextOverflow.ellipsis,
+                                      ),
+                                      const SizedBox(height: 5.0),
+                                      Container(
+                                        width: 60.sp,
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 5, vertical: 3),
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                          border: Border.all(
+                                            width: 1,
+                                            color: buttonColor,
+                                          ),
+                                        ),
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Icon(
+                                              Icons.remove,
+                                              size: 15.sp,
+                                            ),
+                                            Text(
+                                              order.quantity.toString(),
+                                              style: TextStyle(
+                                                fontWeight: FontWeight.w600,
+                                                fontSize: 14.sp,
+                                              ),
+                                              overflow: TextOverflow.ellipsis,
+                                            ),
+                                            Icon(
+                                              Icons.add,
+                                              size: 15.sp,
+                                            ),
+                                          ],
+                                        ),
                                       ),
                                     ],
                                   ),
                                 ),
-                              ],
-                            ),
+                              ),
+                            ],
                           ),
                         ),
+                        Text(
+                          "\$   ${order.quantity! * order.food!.price!}",
+                          style: TextStyle(
+                            fontWeight: FontWeight.w900,
+                            fontSize: 16.sp,
+                          ),
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                        const SizedBox(width: 15)
                       ],
                     ),
                   ),
-                  Text(
-                    "\$   ${order.quantity! * order.food!.price!}",
-                    style: TextStyle(
-                      fontWeight: FontWeight.w900,
-                      fontSize: 16.sp,
+                ),
+                Row(
+                  children: [
+                    Text(
+                      "Total Amount: ",
+                      style: TextStyle(
+                        fontSize: 16.sp,
+                        color: buttonColor,
+                      ),
                     ),
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                  const SizedBox(width: 15)
-                ],
+                    Text(
+                      "\$ $totalCartAmount",
+                      style: TextStyle(
+                        fontSize: 18.sp,
+                        fontWeight: FontWeight.bold,
+                        color: buttonColor,
+                      ),
+                    ),
+                  ],
+                )
+              ],
+            );
+          }
+          return Row(
+            children: [
+              Text(
+                "Total Amount: ",
+                style: TextStyle(
+                  fontSize: 16.sp,
+                  color: buttonColor,
+                ),
               ),
-            ),
+              Text(
+                "\$ $totalCartAmount",
+                style: TextStyle(
+                  fontSize: 18.sp,
+                  fontWeight: FontWeight.bold,
+                  color: buttonColor,
+                ),
+              ),
+            ],
           );
         },
       ),
