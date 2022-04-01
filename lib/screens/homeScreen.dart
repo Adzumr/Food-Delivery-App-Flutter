@@ -38,19 +38,27 @@ class _HomeScreenState extends State<HomeScreen> {
               size: 25.sp,
             ),
             actions: [
-              TextButton(
-                onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (_) => const CartScreen()));
-                },
-                child: Text(
-                  "Cart (${currentUser.cart!.length})",
-                  style: TextStyle(
-                    color: whiteColor,
-                    fontSize: 16.sp,
-                  ),
-                ),
-              )
+              OpenContainer(
+                  closedColor: buttonColor,
+                  transitionType: ContainerTransitionType.fadeThrough,
+                  transitionDuration: const Duration(milliseconds: 600),
+                  closedBuilder: (context, closedWidget) {
+                    return Container(
+                      alignment: Alignment.center,
+                      padding: const EdgeInsets.only(right: 10),
+                      child: Text(
+                        "Cart (${currentUser.orders!.length})",
+                        style: TextStyle(
+                          color: whiteColor,
+                          fontSize: 16.sp,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    );
+                  },
+                  openBuilder: (context, openWidget) {
+                    return const CartScreen();
+                  }),
             ],
           ),
           body: Padding(
