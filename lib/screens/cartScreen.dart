@@ -145,15 +145,15 @@ class _CartScreenState extends State<CartScreen> {
               },
             ),
           ),
-          SizedBox(height: 40.sp)
+          SizedBox(height: 45.sp)
         ],
       ),
       bottomSheet: InkWell(
         onTap: () {},
         child: Container(
-          
+          padding: const EdgeInsets.symmetric(horizontal: 15),
           color: buttonColor,
-          height: 40.sp,
+          height: 45.sp,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
