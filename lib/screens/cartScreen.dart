@@ -159,11 +159,11 @@ class _CartScreenState extends State<CartScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    "CHECKOUT",
+                    "Checkout",
                     style: TextStyle(
                       letterSpacing: 4,
                       fontSize: 18.sp,
-                      fontWeight: FontWeight.w600,
+                      fontWeight: FontWeight.w900,
                       color: whiteColor,
                     ),
                   ),

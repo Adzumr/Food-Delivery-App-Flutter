@@ -2,6 +2,7 @@ import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
 import 'package:food_delivery_app_flutter/data/data.dart';
 import 'package:food_delivery_app_flutter/screens/cartScreen.dart';
+import 'package:food_delivery_app_flutter/screens/profileScreen.dart';
 import 'package:food_delivery_app_flutter/widgets/recentOrders.dart';
 import 'package:food_delivery_app_flutter/widgets/searchBar.dart';
 import 'package:sizer/sizer.dart';
@@ -24,7 +25,7 @@ class _HomeScreenState extends State<HomeScreen> {
           backgroundColor: Colors.grey[100],
           appBar: AppBar(
             title: Text(
-              "Food Delivery",
+              "Cheffy User",
               style: TextStyle(
                 color: whiteColor,
                 fontSize: 16.sp,
@@ -33,32 +34,43 @@ class _HomeScreenState extends State<HomeScreen> {
             elevation: 0,
             backgroundColor: buttonColor,
             centerTitle: true,
-            leading: Icon(
-              Icons.account_circle_outlined,
-              size: 25.sp,
+            leading: OpenContainer(
+              closedColor: buttonColor,
+              transitionType: ContainerTransitionType.fadeThrough,
+              transitionDuration: const Duration(milliseconds: 600),
+              closedBuilder: (context, closedWidget) {
+                return Icon(
+                  Icons.account_circle_outlined,
+                  size: 25.sp,
+                );
+              },
+              openBuilder: (context, openWidget) {
+                return const ProfileScreen();
+              },
             ),
             actions: [
               OpenContainer(
-                  closedColor: buttonColor,
-                  transitionType: ContainerTransitionType.fadeThrough,
-                  transitionDuration: const Duration(milliseconds: 600),
-                  closedBuilder: (context, closedWidget) {
-                    return Container(
-                      alignment: Alignment.center,
-                      padding: const EdgeInsets.only(right: 10),
-                      child: Text(
-                        "Cart (${currentUser.orders!.length})",
-                        style: TextStyle(
-                          color: whiteColor,
-                          fontSize: 16.sp,
-                          fontWeight: FontWeight.w600,
-                        ),
+                closedColor: buttonColor,
+                transitionType: ContainerTransitionType.fadeThrough,
+                transitionDuration: const Duration(milliseconds: 600),
+                closedBuilder: (context, closedWidget) {
+                  return Container(
+                    alignment: Alignment.center,
+                    padding: const EdgeInsets.only(right: 10),
+                    child: Text(
+                      "Cart (${currentUser.orders!.length})",
+                      style: TextStyle(
+                        color: whiteColor,
+                        fontSize: 16.sp,
+                        fontWeight: FontWeight.w600,
                       ),
-                    );
-                  },
-                  openBuilder: (context, openWidget) {
-                    return const CartScreen();
-                  }),
+                    ),
+                  );
+                },
+                openBuilder: (context, openWidget) {
+                  return const CartScreen();
+                },
+              ),
             ],
           ),
           body: Padding(
