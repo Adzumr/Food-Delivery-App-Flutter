@@ -145,38 +145,72 @@ class _CartScreenState extends State<CartScreen> {
               },
             ),
           ),
-          SizedBox(height: 45.sp)
+          SizedBox(
+            height: 40.sp,
+            child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                primary: buttonColor,
+                onPrimary: whiteColor,
+                padding:
+                    const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+              ),
+              onPressed: () {},
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "CHECKOUT",
+                    style: TextStyle(
+                      letterSpacing: 4,
+                      fontSize: 18.sp,
+                      fontWeight: FontWeight.w600,
+                      color: whiteColor,
+                    ),
+                  ),
+                  Text(
+                    "Total: \$ " + totalCartAmount.toStringAsFixed(2),
+                    style: TextStyle(
+                      fontSize: 18.sp,
+                      fontWeight: FontWeight.w600,
+                      color: whiteColor,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          )
         ],
       ),
-      bottomSheet: InkWell(
-        onTap: () {},
-        child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 15),
-          color: buttonColor,
-          height: 45.sp,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                "Checkout:",
-                style: TextStyle(
-                  fontSize: 18.sp,
-                  fontWeight: FontWeight.w600,
-                  color: whiteColor,
-                ),
-              ),
-              Text(
-                totalCartAmount.toStringAsFixed(2),
-                style: TextStyle(
-                  fontSize: 18.sp,
-                  fontWeight: FontWeight.w600,
-                  color: whiteColor,
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
+      // bottomSheet: InkWell(
+      //   onTap: () {},
+      //   child: Container(
+      //     padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+      //     color: buttonColor,
+      //     height: 40.sp,
+      //     child: Row(
+      //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      //       children: [
+      //         Text(
+      //           "CHECKOUT",
+      //           style: TextStyle(
+      //             letterSpacing: 4,
+      //             fontSize: 18.sp,
+      //             fontWeight: FontWeight.w600,
+      //             color: whiteColor,
+      //           ),
+      //         ),
+      //         Text(
+      //           "Total: \$ " + totalCartAmount.toStringAsFixed(2),
+      //           style: TextStyle(
+      //             fontSize: 18.sp,
+      //             fontWeight: FontWeight.w600,
+      //             color: whiteColor,
+      //           ),
+      //         ),
+      //       ],
+      //     ),
+      //   ),
+      // ),
     );
   }
 }

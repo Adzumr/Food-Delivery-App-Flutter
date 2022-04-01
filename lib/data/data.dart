@@ -104,6 +104,12 @@ final currentUser = User(
       restaurant: _restaurant4,
       quantity: 1,
     ),
+    Order(
+      date: 'Jan 19, 2022',
+      food: _pancakes,
+      restaurant: _restaurant4,
+      quantity: 3,
+    ),
   ],
   cart: [
     Order(
@@ -135,6 +141,12 @@ final currentUser = User(
       food: _burrito,
       restaurant: _restaurant1,
       quantity: 2,
+    ),
+    Order(
+      date: 'Jan 19, 2022',
+      food: _pancakes,
+      restaurant: _restaurant4,
+      quantity: 3,
     ),
   ],
 );
