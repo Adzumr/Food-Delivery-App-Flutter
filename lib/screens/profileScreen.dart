@@ -17,14 +17,20 @@ class ProfileScreen extends StatelessWidget {
         title: const Text("Profile Screen"),
       ),
       body: SafeArea(
-        child: Center(
-          child: Text(
-            "User Profile",
-            style: TextStyle(
-              fontSize: 20.sp,
-              fontWeight: FontWeight.bold,
-              color: primaryColor,
-            ),
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Text(
+                "User Profile",
+                style: TextStyle(
+                  fontSize: 20.sp,
+                  fontWeight: FontWeight.bold,
+                  color: primaryColor,
+                ),
+              ),
+            ],
           ),
         ),
       ),
