@@ -24,9 +24,20 @@ class ProfileScreen extends StatelessWidget {
             children: [
               UserInfoTile(
                 icon: Icons.person,
-                title: "Umar Abdulaziz",
+                title: currentUser.name,
               ),
-             
+              UserInfoTile(
+                icon: Icons.home,
+                title: currentUser.address,
+              ),
+              UserInfoTile(
+                icon: Icons.phone,
+                title: currentUser.phoneNumber,
+              ),
+              UserInfoTile(
+                icon: Icons.email,
+                title: currentUser.emailAdress,
+              )
             ],
           ),
         ),
