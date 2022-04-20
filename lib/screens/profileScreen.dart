@@ -37,6 +37,10 @@ class ProfileScreen extends StatelessWidget {
               UserInfoTile(
                 icon: Icons.email,
                 title: currentUser.emailAdress,
+              ),
+              UserInfoTile(
+                icon: Icons.shopping_cart,
+                title: "${currentUser.cart!.length} Items",
               )
             ],
           ),
