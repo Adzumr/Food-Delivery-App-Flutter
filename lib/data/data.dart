@@ -73,6 +73,9 @@ final List<Restaurant> restaurants = [
 // User
 final currentUser = User(
   name: 'Umar Abdulaziz',
+  address: "Gombe, Nigeria",
+  phoneNumber: "2348130762880",
+  emailAdress: "adzumrjada@gmail.com",
   orders: [
     Order(
       date: 'Mar 10, 2022',

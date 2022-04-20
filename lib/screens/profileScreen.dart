@@ -22,16 +22,40 @@ class ProfileScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Text(
-                "User Profile",
-                style: TextStyle(
-                  fontSize: 20.sp,
-                  fontWeight: FontWeight.bold,
-                  color: primaryColor,
-                ),
+              UserInfoTile(
+                icon: Icons.person,
+                title: "Umar Abdulaziz",
               ),
+             
             ],
           ),
+        ),
+      ),
+    );
+  }
+}
+
+class UserInfoTile extends StatelessWidget {
+  String? title;
+  IconData? icon;
+  UserInfoTile({
+    this.icon,
+    this.title,
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      leading: Icon(
+        icon!,
+        color: primaryColor,
+      ),
+      title: Text(
+        title!,
+        style: TextStyle(
+          fontSize: 16.sp,
+          fontWeight: FontWeight.bold,
         ),
       ),
     );
