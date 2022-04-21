@@ -117,21 +117,6 @@ class RecentOrders extends StatelessWidget {
                 ],
               ),
             ),
-            Container(
-              margin: const EdgeInsets.all(8.0),
-              child: CircleAvatar(
-                foregroundColor: whiteColor,
-                backgroundColor: buttonColor,
-                radius: 25.sp,
-                child: IconButton(
-                  splashColor: primaryColor,
-                  tooltip: "Add to Cart",
-                  highlightColor: whiteColor,
-                  icon: const Icon(Icons.add),
-                  onPressed: () {},
-                ),
-              ),
-            )
           ],
         ),
       ),

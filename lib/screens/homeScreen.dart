@@ -1,4 +1,5 @@
 import 'package:animations/animations.dart';
+import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 import 'package:food_delivery_app_flutter/data/data.dart';
 import 'package:food_delivery_app_flutter/screens/cartScreen.dart';
@@ -56,14 +57,19 @@ class _HomeScreenState extends State<HomeScreen> {
                 closedBuilder: (context, closedWidget) {
                   return Container(
                     alignment: Alignment.center,
-                    padding: const EdgeInsets.only(right: 10),
-                    child: Text(
-                      "Cart (${currentUser.orders!.length})",
-                      style: TextStyle(
-                        color: whiteColor,
-                        fontSize: 16.sp,
-                        fontWeight: FontWeight.w600,
+                    padding: const EdgeInsets.only(right: 15),
+                    child: Badge(
+                      showBadge: true,
+                      position: BadgePosition.topEnd(),
+                      badgeColor: whiteColor,
+                      badgeContent: Text(
+                        "${currentUser.cart!.length}",
+                        style: TextStyle(
+                          color: buttonColor,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
+                      child: const Icon(Icons.shopping_cart),
                     ),
                   );
                 },
