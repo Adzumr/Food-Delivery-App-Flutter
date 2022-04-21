@@ -37,6 +37,7 @@ dependencies:
   sizer: ^2.0.15
   animations: ^2.0.2
   badges: ^2.0.2
+  toast: ^0.3.0
 
 dev_dependencies:
   flutter_test:
