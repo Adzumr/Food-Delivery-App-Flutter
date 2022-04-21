@@ -15,6 +15,7 @@ class RestaurantScreen extends StatefulWidget {
 
 class _RestaurantScreenState extends State<RestaurantScreen> {
   bool isFavorite = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -98,7 +99,9 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
                             borderRadius: BorderRadius.circular(15),
                           ),
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                          setState(() {});
+                        },
                         child: Text(
                           "Reviews",
                           style: TextStyle(fontSize: 16.sp),

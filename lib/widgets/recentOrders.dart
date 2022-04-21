@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:food_delivery_app_flutter/data/data.dart';
 import 'package:food_delivery_app_flutter/models/order.dart';
 import 'package:sizer/sizer.dart';
-import 'package:toast/toast.dart';
 
 class RecentOrders extends StatelessWidget {
   const RecentOrders({Key? key}) : super(key: key);
@@ -34,7 +33,11 @@ class RecentOrders extends StatelessWidget {
                     String foodPrice = order.food!.price.toString();
                     String foodImage = order.food!.imageUrl.toString();
                     return _recentOrders(
-                        foodImage, foodName, restaurantName, foodPrice);
+                      foodImage,
+                      foodName,
+                      restaurantName,
+                      foodPrice,
+                    );
                   },
                 ),
               )
@@ -60,74 +63,65 @@ class RecentOrders extends StatelessWidget {
           color: whiteColor,
           borderRadius: BorderRadius.circular(20),
         ),
-        child: InkWell(
-          onTap: () {
-            Toast.show(
-              "Recent Order Pressed",
-              duration: Toast.lengthShort,
-              gravity: Toast.center,
-            );
-          },
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Expanded(
-                child: Row(
-                  children: [
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(15),
-                      child: SizedBox(
-                        width: 100.sp,
-                        height: 100.sp,
-                        child: Image.asset(
-                          foodImage,
-                          fit: BoxFit.fitHeight,
-                        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Expanded(
+              child: Row(
+                children: [
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(15),
+                    child: SizedBox(
+                      width: 100.sp,
+                      height: 100.sp,
+                      child: Image.asset(
+                        foodImage,
+                        fit: BoxFit.fitHeight,
                       ),
                     ),
-                    const SizedBox(width: 10),
-                    Expanded(
-                      child: Container(
-                        margin: const EdgeInsets.all(8.0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              foodName,
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 16.sp,
-                              ),
-                              overflow: TextOverflow.ellipsis,
+                  ),
+                  const SizedBox(width: 10),
+                  Expanded(
+                    child: Container(
+                      margin: const EdgeInsets.all(8.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            foodName,
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16.sp,
                             ),
-                            const SizedBox(height: 5.0),
-                            Text(
-                              restaurantName,
-                              style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                fontSize: 12.sp,
-                              ),
-                              overflow: TextOverflow.ellipsis,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                          const SizedBox(height: 5.0),
+                          Text(
+                            restaurantName,
+                            style: TextStyle(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 12.sp,
                             ),
-                            const SizedBox(height: 5.0),
-                            Text(
-                              "\$ " + foodPrice,
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 14.sp,
-                              ),
-                              overflow: TextOverflow.ellipsis,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                          const SizedBox(height: 5.0),
+                          Text(
+                            "\$ " + foodPrice,
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 14.sp,
                             ),
-                          ],
-                        ),
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ],
                       ),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
