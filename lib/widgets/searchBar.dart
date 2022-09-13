@@ -18,8 +18,8 @@ class SearchBar extends StatelessWidget {
         selectAll: true,
       ),
       decoration: InputDecoration(
-        contentPadding: const EdgeInsets.symmetric(
-            vertical: 10, horizontal: 20),
+        contentPadding:
+            const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
         prefixIcon: IconButton(
           onPressed: () {},
           icon: Icon(
